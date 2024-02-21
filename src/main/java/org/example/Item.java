@@ -2,7 +2,12 @@ package org.example;
 
 public class Item {
     String nome;
-    Integer preco;
+    Float preco;
+
+    public Item(String nome, float preco) {
+        this.nome = nome;
+        this.preco = preco;
+    }
 
 //    Funções
     void getNome(){
