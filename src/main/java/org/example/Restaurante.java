@@ -7,17 +7,17 @@ public class Restaurante {
 //    Atributos
     String nome;
     String avaliacao;
-    static List<Item> cardapio = new ArrayList<>();
+    ArrayList<Item> cardapio = new ArrayList<>();
 //    Funções
     void getNome(){
         System.out.println("Nome" + this.nome);
     }
 
-    static void adicionarItem(Item item){
-        cardapio.add(item);
+    public void adicionarItem(Item item){
+        this.cardapio.add(item);
     }
 
-    static void imprimirMenu(){
+    public void imprimirMenu(){
         for (Item item : cardapio){
             System.out.println(item.nome + " - R$" + item.preco);
         }

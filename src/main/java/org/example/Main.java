@@ -27,31 +27,35 @@ public class Main {
                 restaurante.avaliacao = avaliacao;
                 restaurantes.add(restaurante);
                 System.out.println("Restaurante " + restaurante.nome + " cadastrado com sucesso!");
-                System.out.println(" ");
-
             } else if (opcao.equals("2")) {
                 if (restaurantes.isEmpty()) {
                     System.out.println("Nenhum restaurante cadastrado.");
+                } else {
+                    System.out.println("Restaurantes cadastrados:");
                 }
-                System.out.println("Restaurantes cadastrados:");
 //                 Lista restaurantes com número de cada
                 for (int i = 0; i < restaurantes.size(); i++) {
                     Restaurante restaurante = restaurantes.get(i);
-                    System.out.println(i + 1 + ". " + restaurantes.get(i).nome);
-                    Restaurante.imprimirMenu();
+                    System.out.println(i + 1 + ": " + restaurante.nome);
+                    restaurante.imprimirMenu();
                     System.out.println(" ");
                 }
             } else if (opcao.equals("3")) {
                 System.out.println("Escolha o número do restaurante para adicionar um item ao menu:");
                 int escolhido = scanner.nextInt();
                 scanner.nextLine(); // Consumir a quebra de linha novamente
-                Restaurante restauranteEscolhido = restaurantes.get(escolhido - 1);
                 System.out.print("Digite o nome do item: ");
                 String nomeItem = scanner.nextLine();
                 System.out.print("Digite o preco do item: ");
                 float precoItem = scanner.nextFloat();
                 Item item = new Item(nomeItem, precoItem);
-                restauranteEscolhido.adicionarItem(item);
+                if (escolhido >= 1 && escolhido <= restaurantes.size()) {
+                    Restaurante restauranteEscolhido = restaurantes.get(escolhido - 1);
+                    restauranteEscolhido.adicionarItem(item);
+                    System.out.println("Item " + nomeItem + " adicionado ao menu do restaurante com sucesso!");
+                } else {
+                    System.out.println("Número de restaurante inválido.");
+                }
                 System.out.println("Item " + nomeItem + " adicionado ao menu do restaurante com sucesso!");
             } else if (opcao.equals("4")) {
                 System.out.println("Obrigado por utilizar o sistema de cadastro de restaurantes!");
